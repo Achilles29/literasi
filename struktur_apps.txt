@@ -1,0 +1,19 @@
+ai_generated_questions	id, question_text, option_a, option_b, option_c, option_d, correct_option, weight, level, topic, status, is_deleted, created_at
+answers	id, peserta_event_id, question_id, option_id, is_correct, weight, created_at, is_deleted, answered_at, time_spent, updated_at
+bank_soal	id, text, image_path, weight, category, level, is_deleted, created_at, updated_at
+bank_soal_option	id, bank_soal_id, label, text, is_correct, is_deleted, created_at, updated_at
+events	id, name, description, start_time, end_time, global_duration_seconds, is_active, is_deleted, created_at, updated_at
+logs	id, peserta_event_id, role, action, details, risk, ip_address, user_agent, created_at, is_deleted, user_id
+peserta	id, nik, name, email, phone, school_name, level, approved, is_deleted, created_at, updated_at
+peserta_event	id, peserta_id, event_id, token, approved, started_at, finished_at, duration_seconds, score, is_deleted, created_at, updated_at, status, question_order
+peserta_progress	id, peserta_event_id, question_id, visited_at
+questions	id, event_id, bank_soal_id, text, image_path, weight, category, level, order_number, is_required, is_deleted, created_at, updated_at
+question_options	id, question_id, label, text, is_correct, is_deleted, created_at, updated_at
+users	id, name, email, password_hash, role, is_active, is_deleted, created_at, updated_at
+
+SELECT 
+  TABLE_NAME AS tabel,
+  GROUP_CONCAT(COLUMN_NAME ORDER BY ORDINAL_POSITION SEPARATOR ', ') AS kolom
+FROM information_schema.COLUMNS
+WHERE TABLE_SCHEMA = 'apps_lomba'
+GROUP BY TABLE_NAME;
